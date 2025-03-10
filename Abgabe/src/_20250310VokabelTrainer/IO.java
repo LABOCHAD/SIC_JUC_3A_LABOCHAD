@@ -37,7 +37,7 @@ public class IO {
         return vocabMap;
     }
 
-    //Implementiere eine Methode, welche das Wort aus der Datei löscht.
+    //DONE - Implementiere eine Methode, welche das Wort aus der Datei löscht.
     // Nutze dafür die loadVocab und saveVocab()
     // -Methoden und dein Wissen über HashMaps.
     public void deleteWord(String word) throws IOException {

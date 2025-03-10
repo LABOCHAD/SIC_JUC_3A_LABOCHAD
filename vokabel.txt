@@ -1,0 +1,3 @@
+ragazzo=Junge
+amico=Freund
+imparare=lernen

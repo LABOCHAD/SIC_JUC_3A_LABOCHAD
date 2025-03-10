@@ -57,7 +57,7 @@ public class VokabelTrainerController {
         }
     }
 
-    //TODO: Hier soll eine Logik implementiert werden, die ein QUIZ startet, um Vokabeln zu üben.
+    //DONE: Hier soll eine Logik implementiert werden, die ein QUIZ startet, um Vokabeln zu üben.
     private void startQuiz() {
         Random keyPicker = new Random();
         int right = 0;
@@ -65,11 +65,9 @@ public class VokabelTrainerController {
         //https://stackoverflow.com/questions/929554/is-there-a-way-to-get-the-value-of-a-hashmap-randomly-in-java
         List<String> keys = new ArrayList<>(vocabMap.keySet()); //convert keys of a map to list to make it accessible via random index
         QUESTION: for (Map.Entry<String, String> entry : vocabMap.entrySet()) {
-
             int index = keyPicker.nextInt(keys.size()); //get a random index
             String randomKey = keys.get(index); //get key by value from the list with random index
             keys.remove(randomKey); //so this vocabulary won't be asked for another time
-
             int tries = 3;
             do {
                 String userAnswer = JOptionPane.showInputDialog(ui.getFrame(), "Übersetzung für: " + randomKey);
@@ -81,11 +79,11 @@ public class VokabelTrainerController {
                     continue QUESTION;
                 } else
                     JOptionPane.showMessageDialog(ui.getFrame(), ("Doh, that was wrong. Left tries: " + tries));
-
             } while (--tries > 0);
             JOptionPane.showMessageDialog(ui.getFrame(), "Sorry, but this will count a a miss.");
             wrong++;
-
         }
+        JOptionPane.showMessageDialog(ui.getFrame(), String.format("Result: %d right / %d wrong", right, wrong));
+
     }
 }

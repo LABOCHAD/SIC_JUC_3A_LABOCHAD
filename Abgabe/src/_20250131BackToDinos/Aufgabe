@@ -1,0 +1,25 @@
+Aufgabenstellung
+Erstelle eine Schnittstelle (Google: Interface) Lebewesen
+mit den Methoden essen(), schlafen(), bewegen() und lauten().
+
+Erstelle die abstrakte Klasse Dinosaurier, die die Schnittstelle Lebewesen implementiert und
+    folgende zusätzliche Eigenschaften hat: gewicht und größe.
+
+Implementiere die Methoden der Schnittstelle Lebewesen in der abstrakten Klasse Dinosaurier.
+//Müsste theoretisch nicht hier, sondern ab der ersten konkreten Klasse, dürfte hier aber mehr Sinn machen.
+
+Füge eine abstrakte Methode jagen() hinzu, die jede Unterklasse implementieren muss.
+
+Erstelle die Unterklassen Tyrannosaurus, Triceratops und Velociraptor,
+    die jeweils Dinosaurier erweitern und die Methoden jagen() und lauten() implementieren.
+
+Erstelle eine Methode in jeder Unterklasse, die das Gewicht
+    und die Größe des Dinosauriers berechnet und zurückgibt. //Abweichung im Tutorium besprochen
+
+Erstelle eine weitere Unterklasse Pterodactylus,
+    die Flugfähig Schnittstelle implementiert und Methoden für das Fliegen enthält.
+
+In der Hauptklasse, erstelle eine Methode, die eine Liste von Dinosaurier-Objekten durchläuft
+    und für jeden Dinosaurier alle Methoden der Schnittstelle Lebewesen
+    sowie die Methoden jagen(), lauten(), essen(), schlafen(), bewegen() und
+    beschreiben() aufruft. //von Beschreiben() war bisher nicht die Rede, was da los? :D

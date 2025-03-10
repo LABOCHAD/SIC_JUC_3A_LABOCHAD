@@ -1,0 +1,14 @@
+Mögliche Klassen:
+Türen (abstract)
+    Holz und Eisen
+
+Räume (abstract)
+ 1, 2, 3, 4
+
+Gegner (abstract)
+    Schattengolem, Feuerdrache, Geisterkrieger --> 12
+
+Rätsel(?)
+    Rechenaufgabe/Statue, Artefakt
+
+Kampf(?)

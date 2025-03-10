@@ -1,0 +1,7 @@
+Dominik Labocha so habe ich mir das notiert:
+/**
+* (?!) ignoriert die Groß-/Kleinschreibung
+* ^ sucht am Anfang des Wortes
+* [AEIOU] sucht nach einem Vokal *
+.*. sucht nach null oder mehr beliebigen Zeichen
+* " beendet den regulären Ausdruck */

@@ -1,0 +1,87 @@
+Herangehensweise:
+
+1.	Was soll ich machen?
+Erstelle ein einfaches Text-basiertes Monsterkampfspiel, in dem der Spieler gegen
+verschiedene Monster kämpfen kann.
+MIT EINEM EIGENEN MONSTER (wie Pokemon)!
+
+2.	Welche Klassen, Methoden, Variablen, Exceptions?
+    Klassen:
+        Monster (abstract)
+            Drache,
+            Zentaur,
+            EigenesMonster (für den Benutzer)
+        KampfArena
+
+    Methoden:
+        [Monster]
+        angreifen(Monster gegner)
+        getDetails() (abstract)
+            --> jeweils konkret in Subklassen, (wegen des Drachens, Feuerkraft)
+
+        [Feuerdrache]
+        (Zusatz):
+        angreifen(Monster gegner) @Override
+            Feuerkraft statt Angriffskraft zieht Gegnerleben ab.
+            --> etwas konstruiert, aber dient ja nur der Übung
+        getDetails() (konkretisieren) (nicht explizit gefordert, aber muss, weil in Monster abstrakt)
+
+        [Zentaur]
+        getDetails() (konkretisieren)
+
+        [KampfArena]
+        showAllMonster()
+        startFight()
+
+    Variablen:
+        [Monster]
+        name(String), leben(int), angriffskraft(int)
+
+        [Drache]
+        feuerkraft(int)
+
+        [KampfArena]
+        monster(ArrayList)
+        eingabe(String) (schlau gemacht, damit wir schön parsen müssen ;) )
+        scanner(Scanner)
+            für Nutzereingaben
+        random(Random) (Bound = list.size)
+            (nicht size -1, weil bound n exklusiv (n-1))
+
+    Exceptions:
+        [Monster]
+        MonsterException (wenn Name leer oder negativ beim Konstruktor)
+            Handling try-catch caller Monster Construction
+
+
+3.	Offene Fragen/Probleme/Konkretisierungen der Umsetzung
+
+Methode Angriff: Bedenke Möglichkeit Gesundheit kleiner Null abzufangen, dann nur 0,
+aber muss ja nicht angezeigt werden, als wenn kleiner gleich null, ist Monster tot.
+
+MonsterException checked oder unchecked und wie handeln?
+    - Ich würde sagen checked mit try catch und rethrow zum Caller,
+    um den Nutzer um zu einer erneuten Eingabe aufzufordern.
+    (Rekursion im Catch-Block?) --> Handling überhaupt gefordert?
+
+Kein Schnickschnack wie Spezialattacken, Heilung oder so!
+    außer es ist noch Zeit und später auch noch für Englisch
+
+Anzeigen der Infos direkt mit Attributen. (keine weitere Liste)
+Anzeige aller Monster mit forEach erstmal zeilenweise (später String-Builder?)
+Getter und Setter nicht vergessen.
+
+Hinzufügen der Monster bei startFight() im Try-catch,
+Drache und Zentaur im Loop (feste Parameter, nur hinzufügen), abbruch mit stopp
+dann eigenes Monster erstellen , um es gegen die anderen kämpfen zu lassen (Starter-Pokemon :D)
+
+Erst dann soll soll ein Randomizer ein Monster aus der Liste wählen und den Kampf starten
+ Dieser endet, wenn einer von beiden 0 Leben hat.
+
+(Zusatz: Lasse den Nutzer in der Arena, bis er alle besieht hat. (remove() aus Liste oder isDead in Klasse?)
+    für den Anfang sollte ein remove reichen
+    Es werden per Zufalls solange Monster aus dem pool geholt, bis liste leer ist.
+    Achte beim iterieren durch die Liste darauf, dass der Umfang sich mit jedem
+    Mal verkleinert und der Loop so sein eigentliches Ende nicht erreicht
+    Nehme als Inspiration meine damalige Funktion mit dem Schiffe Pool aus BattleShip)
+

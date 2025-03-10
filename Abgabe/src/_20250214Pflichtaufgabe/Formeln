@@ -1,0 +1,24 @@
+---Celsius zu Fahrenheit---
+(°C * 1.8) + 32 = °F /
+°F = (9/5 × °C) + 32
+f = (c * 1.8 ) + 32
+(temperature * 1.8) + 32;
+
+---Fahrenheit zu Celsius---
+(°F - 32) / 1.8 = °C // 9/5 = 1,8
+c = (f - 32) / 1.8
+(temperature - 32) * 1.8;
+
+---Kelvin zu Celsius---
+k = c -273.15
+(temperature -273.15);
+
+---Celsius zu Kelvin---
+c = k +273.15
+(temperature +273.15);
+
+---Kelvin in Fahrenheit---
+(0 K − 273,15) × 9/5 + 32 = -459,7 °F
+°F = (K − 273,15) × 1,8 + 32
+F × 1,8 + 32 = K − 273,15 | + 273,15
+K = F × 1,8 + 32 + 273,15

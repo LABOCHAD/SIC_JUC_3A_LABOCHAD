@@ -1,0 +1,5 @@
+1.Erstelle ein Interface Calculator, welches eine einzige abstrakte Methode calculate(int a, int b) haben soll, die einen int zurückgibt.
+2.Erstelle eine Klasse Plus, Minus, Teilen, Multiplizieren, die das Interface implementiert und die calculate-Methode überschreibt
+3.Erstelle eine Test-Klasse, in welcher du die Klassen Plus, Minus, Teilen, Multiplizieren ausprobierst.
+4.Erstelle nun in der Test-Klasse ein Objekt des Interfaces Calculator und schreibe einen Lambdaausdruck,
+    wodurch die calculate-Methode des Interfaces direkt implementiert wird.

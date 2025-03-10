@@ -1,0 +1,7 @@
+Signatur braucht kein throws
+braucht kein try-catch block
+Kann aber gefangen werden.
+es reicht aber, je nachdem ob sinnvoll oder nicht
+
+also im Zweifel erstmal versuchen als RTE anzulegen
+oder nachschauen was sie ist. Ob checked oder unchecked.

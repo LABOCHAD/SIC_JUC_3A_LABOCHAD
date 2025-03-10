@@ -64,26 +64,33 @@ public class VokabelTrainerController {
         int wrong = 0;
         //https://stackoverflow.com/questions/929554/is-there-a-way-to-get-the-value-of-a-hashmap-randomly-in-java
         List<String> keys = new ArrayList<>(vocabMap.keySet()); //convert keys of a map to list to make it accessible via random index
-        QUESTION: for (Map.Entry<String, String> entry : vocabMap.entrySet()) {
+        QUESTION:
+        for (Map.Entry<String, String> entry : vocabMap.entrySet()) {
             int index = keyPicker.nextInt(keys.size()); //get a random index
             String randomKey = keys.get(index); //get key by value from the list with random index
             keys.remove(randomKey); //so this vocabulary won't be asked for another time
             int tries = 3;
             do {
+                tries--;
                 String userAnswer = JOptionPane.showInputDialog(ui.getFrame(), "Übersetzung für: " + randomKey);
-                if (userAnswer == null ||userAnswer.isBlank()) return;
+                if (userAnswer == null || userAnswer.isBlank()) return;
                 //if answer equals answer to this question in the map
                 if (userAnswer.equalsIgnoreCase(vocabMap.get(randomKey))) {
                     right++;
                     JOptionPane.showMessageDialog(ui.getFrame(), "Nice, that was correct.");
-                    continue QUESTION;
-                } else
+                    break;
+                } else {
                     JOptionPane.showMessageDialog(ui.getFrame(), ("Doh, that was wrong. Left tries: " + tries));
-            } while (--tries > 0);
-            JOptionPane.showMessageDialog(ui.getFrame(), "Sorry, but this will count a a miss.");
-            wrong++;
+                    wrong++;
+                    if (tries == 0)
+                        JOptionPane.showMessageDialog(ui.getFrame(), "Sorry, but this will count a a miss.");
+                }
+            } while (tries > 0);
+            if (!keys.isEmpty()) {
+                int choice = JOptionPane.showConfirmDialog(ui.getFrame(), "Möchtest du weitermachen?", "Quiz", JOptionPane.YES_NO_OPTION);
+                if (choice == JOptionPane.NO_OPTION) break;
+            }
         }
         JOptionPane.showMessageDialog(ui.getFrame(), String.format("Result: %d right / %d wrong", right, wrong));
-
     }
 }

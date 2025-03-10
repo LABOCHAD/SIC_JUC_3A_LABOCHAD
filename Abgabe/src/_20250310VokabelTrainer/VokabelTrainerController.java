@@ -62,30 +62,30 @@ public class VokabelTrainerController {
         Random keyPicker = new Random();
         int right = 0;
         int wrong = 0;
-        //Collections.shuffle((List<?>) vocabMap.keySet()); //Help by IDE, make questioning random
-        Set<String> values = (Set<String>) vocabMap.values(); //convert values of a map to list to make it accessible via random index
-        for (Map.Entry<String, String> entry : vocabMap.entrySet()) { //so the list can be shrunken while count won't be touched
-            int index = keyPicker.nextInt(vocabMap.size()); //get a random index
-            String randomKey = vocabMap.get(values); //get key by value from the list with random index
-            values.remove(randomKey); //so this vocabulary won't be asked for another time
+        //https://stackoverflow.com/questions/929554/is-there-a-way-to-get-the-value-of-a-hashmap-randomly-in-java
+        List<String> keys = new ArrayList<>(vocabMap.keySet()); //convert keys of a map to list to make it accessible via random index
+        QUESTION: for (Map.Entry<String, String> entry : vocabMap.entrySet()) {
+
+            int index = keyPicker.nextInt(keys.size()); //get a random index
+            String randomKey = keys.get(index); //get key by value from the list with random index
+            keys.remove(randomKey); //so this vocabulary won't be asked for another time
+
             int tries = 3;
-            boolean isCorrect = false;
             do {
-                tries--;
                 String userAnswer = JOptionPane.showInputDialog(ui.getFrame(), "Übersetzung für: " + randomKey);
+                if (userAnswer == null ||userAnswer.isBlank()) return;
                 //if answer equals answer to this question in the map
-                if (userAnswer.equals(vocabMap.get(randomKey))) {
-                    isCorrect = true;
+                if (userAnswer.equalsIgnoreCase(vocabMap.get(randomKey))) {
                     right++;
                     JOptionPane.showMessageDialog(ui.getFrame(), "Nice, that was correct.");
-                } else {
+                    continue QUESTION;
+                } else
                     JOptionPane.showMessageDialog(ui.getFrame(), ("Doh, that was wrong. Left tries: " + tries));
-                    if (tries == 0) {
-                        JOptionPane.showMessageDialog(ui.getFrame(), "Sorry, but this will count a a miss.");
-                        wrong++;
-                    }
-                }
-            } while (tries > 0 || !isCorrect);
+
+            } while (--tries > 0);
+            JOptionPane.showMessageDialog(ui.getFrame(), "Sorry, but this will count a a miss.");
+            wrong++;
+
         }
     }
 }

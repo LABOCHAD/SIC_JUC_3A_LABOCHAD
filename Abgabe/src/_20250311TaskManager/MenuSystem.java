@@ -10,6 +10,8 @@ import java.util.Scanner;
 public class MenuSystem {
     Scanner scanner = new Scanner(System.in);
     List<Task> tasks = new ArrayList<>();
+    ArrayList<Task> openTasks = new ArrayList<>();
+    ArrayList<Task> completedTasks = new ArrayList<>();
     int idCount;
 
     public static void main(String[] args) {
@@ -37,20 +39,48 @@ public class MenuSystem {
     }
 
     void navigate() {
-        switch (showMenu()) {
-            case 1:
-                addTask();
-                break;
-            case 2:
-                showAllTasks();
-                break;
-            case 3:
-                markTaskAsDone();
-                break;
-            case 9:
-                return;
-            default:
-                System.err.println("Something must have gone horribly wrong here. Exiting...");
+        while (true) {
+            switch (showMenu()) {
+                case 1:
+                    addTask();
+                    break;
+                case 2:
+                    showAllTasks();
+                    break;
+                case 3:
+                    markTaskAsDone();
+                    break;
+                case 4:
+                    deleteTask();
+                    break;
+                case 5:
+                    prioritize();
+                    break;
+                case 6:
+                    System.out.println("6 still in construction...");
+                    break;
+                case 7:
+                    System.out.println("7 still in construction...");
+                    break;
+                case 8:
+                    System.out.println("8 still in construction...");
+                    break;
+                case 9:
+                    return;
+                default:
+                    System.err.println("Oops. Something went wrong here.");
+            }
+        }
+    }
+
+    void prioritize() {
+        try {
+            Task task = getTaskById();
+            System.out.println("Choose new priority for the task (1-5): ");
+            int newPriority = UserInputScanner.getIntOnlyPosRanged(scanner, 1, 6);
+            task.setPriority(newPriority);
+        } catch (IllegalArgumentException | TaskNotFoundException e) {
+            System.err.println(e.getMessage());
         }
     }
 
@@ -61,21 +91,37 @@ public class MenuSystem {
         String description = scanner.nextLine();
         System.out.println("Enter task priority: ");
         int priority = UserInputScanner.getIntOnlyPosRanged(scanner, 1, 6);
-        tasks.add(new Task(++idCount, name, description, priority));
         //TODO consider later to test for lower id available in case a task has been deleted and reassign lower instead
+        try {
+            tasks.add(new Task(++idCount, name, description, priority));
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
-    void showAllTasks() {
-        ArrayList<Task> openTasks = new ArrayList<>();
-        ArrayList<Task> completedTasks = new ArrayList<>();
+    void deleteTask() throws TaskNotFoundException {
+        try {
+            Task task = getTaskById();
+            tasks.remove(task);
+            System.out.println("Task deleted: " + task);
+        } catch (TaskNotFoundException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
+    void distinguishTasksByStatus() {
+        openTasks.clear();
+        completedTasks.clear();
         for (Task task : tasks) { //we were supposed to do this without streams/filters
             if (!task.isDone())
                 openTasks.add(task);
             else
                 completedTasks.add(task);
         }
+    }
 
+    void showAllTasks() {
+        distinguishTasksByStatus();
         Comparator<Task> compareTaskByPriority = Comparator.comparing(Task::getPriority);
         openTasks.sort(compareTaskByPriority);
         completedTasks.sort(compareTaskByPriority);
@@ -88,19 +134,19 @@ public class MenuSystem {
     }
 
     void markTaskAsDone() throws TaskNotFoundException {
-        System.out.println("Enter task id: ");
-        int id = UserInputScanner.getIntOnlyPos(scanner);
         try {
-            Task task = getTaskById(id);
+            Task task = getTaskById();
             task.markAsDone();
             System.out.println("Task Marked as done:");
             System.out.println(task);
         } catch (IllegalStateException | TaskNotFoundException e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 
-    Task getTaskById(int id) throws TaskNotFoundException {
+    Task getTaskById() throws TaskNotFoundException {
+        System.out.println("Enter task id: ");
+        int id = UserInputScanner.getIntOnlyPos(scanner);
         //I wanted to do this with lambdas first, but that became too complicated.
         for (Task task : tasks) {
             if (task.getId() == id)

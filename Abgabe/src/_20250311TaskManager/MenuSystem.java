@@ -61,7 +61,7 @@ public class MenuSystem {
                     displaySortedByPriority();
                     break;
                 case 7:
-                    System.out.println("7 still in construction...");
+                    searchTaskByNameOrDescriptionAndShow();
                     break;
                 case 8:
                     System.out.println("8 still in construction...");
@@ -71,6 +71,24 @@ public class MenuSystem {
                 default:
                     System.err.println("Oops. Something went wrong here.");
             }
+        }
+    }
+
+    void searchTaskByNameOrDescriptionAndShow() {
+        System.out.println("Enter the name or description or a part of one of them:");
+        String searchKey = scanner.nextLine();
+        ArrayList<Task> foundTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.getName().toLowerCase().contains(searchKey.toLowerCase()) ||
+                task.getDescription().toLowerCase().contains(searchKey.toLowerCase()))
+                foundTasks.add(task);
+        }
+        if (foundTasks.isEmpty()) {
+            System.out.println("No task found with that name or description has been found.");
+        }
+        else {
+            System.out.println("Found " + foundTasks.size() + " task(s).");
+            foundTasks.forEach(System.out::println);
         }
     }
 

@@ -6,13 +6,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.BiPredicate;
 
 public class MenuSystem {
     Scanner scanner = new Scanner(System.in);
     List<Task> tasks = new ArrayList<>();
     int idCount;
-    BiPredicate<Task, Integer> taskHasPriority = (task, priority) -> task.getPriority() == priority;
 
     public static void main(String[] args) {
         MenuSystem ms = new MenuSystem();
@@ -71,21 +69,25 @@ public class MenuSystem {
         completedTasks.forEach(System.out::println);
     }
 
-    void markTaskAsDone() {
+    void markTaskAsDone() throws TaskNotFoundException {
         System.out.println("Enter task id: ");
         int id = UserInputScanner.getIntOnlyPos(scanner);
-        try{
-            for (Task task : tasks) {
-                if (task.getId() == id) {
-                    task.markAsDone();
-                    System.out.println("Task Marked as done:");
-                    System.out.println(task);
-                    break;
-                }
-            }
-        } catch (IllegalStateException e){
+        try {
+            Task task = getTaskById(id);
+            task.markAsDone();
+            System.out.println("Task Marked as done:");
+            System.out.println(task);
+        } catch (IllegalStateException | TaskNotFoundException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    Task getTaskById(int id) throws TaskNotFoundException {
+        for (Task task : tasks) {
+            if (task.getId() == id)
+                return task;
+        }
+        throw new TaskNotFoundException("Task with id " + id + " not found");
     }
 
 

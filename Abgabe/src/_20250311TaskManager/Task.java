@@ -15,6 +15,7 @@ public class Task {
         this.name = name;
         this.description = description;
         this.priority = priority;
+        System.out.println("Task has been created");
     }
 
     void markAsDone() {

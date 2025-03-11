@@ -64,7 +64,7 @@ public class MenuSystem {
                     searchTaskByNameOrDescriptionAndShow();
                     break;
                 case 8:
-                    System.out.println("8 still in construction...");
+                    showStatistics();
                     break;
                 case 9:
                     return;
@@ -72,6 +72,13 @@ public class MenuSystem {
                     System.err.println("Oops. Something went wrong here.");
             }
         }
+    }
+    void showStatistics(){
+        System.out.println("\nStatistics:");
+        System.out.println("Total count of tasks: \t" + tasks.size());
+        distinguishTasksByStatus();
+        System.out.println("Tasks still in progress: \t" + openTasks.size());
+        System.out.println("Tasks already completed: \t" + completedTasks.size());
     }
 
     void searchTaskByNameOrDescriptionAndShow() {

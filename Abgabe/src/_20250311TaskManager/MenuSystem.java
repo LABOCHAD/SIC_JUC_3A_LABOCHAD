@@ -71,5 +71,22 @@ public class MenuSystem {
         completedTasks.forEach(System.out::println);
     }
 
+    void markTaskAsDone() {
+        System.out.println("Enter task id: ");
+        int id = UserInputScanner.getIntOnlyPos(scanner);
+        try{
+            for (Task task : tasks) {
+                if (task.getId() == id) {
+                    task.markAsDone();
+                    System.out.println("Task Marked as done:");
+                    System.out.println(task);
+                    break;
+                }
+            }
+        } catch (IllegalStateException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
 
 }

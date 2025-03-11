@@ -12,6 +12,7 @@ public class MenuSystem {
     List<Task> tasks = new ArrayList<>();
     ArrayList<Task> openTasks = new ArrayList<>();
     ArrayList<Task> completedTasks = new ArrayList<>();
+    Comparator<Task> compareTaskByPriority = Comparator.comparing(Task::getPriority);
     int idCount;
 
     public static void main(String[] args) {
@@ -57,7 +58,7 @@ public class MenuSystem {
                     prioritize();
                     break;
                 case 6:
-                    System.out.println("6 still in construction...");
+                    displaySortedByPriority();
                     break;
                 case 7:
                     System.out.println("7 still in construction...");
@@ -71,6 +72,11 @@ public class MenuSystem {
                     System.err.println("Oops. Something went wrong here.");
             }
         }
+    }
+
+    void displaySortedByPriority() {
+        tasks.sort(compareTaskByPriority);
+        tasks.forEach(System.out::println);
     }
 
     void prioritize() {
@@ -122,7 +128,6 @@ public class MenuSystem {
 
     void showAllTasks() {
         distinguishTasksByStatus();
-        Comparator<Task> compareTaskByPriority = Comparator.comparing(Task::getPriority);
         openTasks.sort(compareTaskByPriority);
         completedTasks.sort(compareTaskByPriority);
 

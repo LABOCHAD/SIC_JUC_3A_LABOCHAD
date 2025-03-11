@@ -63,6 +63,6 @@ public class Task {
                "\nname='" + name + '\'' +
                "\ndescription='" + description + '\'' +
                "\npriority=" + priority +
-               "\ndone=" + (done ? "yes" : "no") + "\n";
+               "\ndone=" + (done ? "yes" : "no");
     }
 }

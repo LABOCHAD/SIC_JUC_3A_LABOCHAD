@@ -64,7 +64,6 @@ public class VokabelTrainerController {
         int wrong = 0;
         //https://stackoverflow.com/questions/929554/is-there-a-way-to-get-the-value-of-a-hashmap-randomly-in-java
         List<String> keys = new ArrayList<>(vocabMap.keySet()); //convert keys of a map to list to make it accessible via random index
-        QUESTION:
         for (Map.Entry<String, String> entry : vocabMap.entrySet()) {
             int index = keyPicker.nextInt(keys.size()); //get a random index
             String randomKey = keys.get(index); //get key by value from the list with random index

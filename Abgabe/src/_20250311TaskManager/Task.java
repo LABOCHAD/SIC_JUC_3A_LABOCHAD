@@ -1,11 +1,11 @@
 package _20250311TaskManager;
 
 public class Task {
-    int id;
-    String name;
-    String description;
-    int priority;
-    boolean done; //isCompleted
+    private int id;
+    private String name;
+    private String description;
+    private int priority;
+    private boolean done; //isCompleted
 
     Task(int id, String name, String description, int priority) {
         if (priority < 0 || priority > 5) {
@@ -32,4 +32,37 @@ public class Task {
         this.priority = priority;
     }
 
+    public int getPriority() {
+        return priority;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+
+    @Override
+    public String toString() {
+        return "\nTask " + id +
+               "\nname='" + name + '\'' +
+               "\ndescription='" + description + '\'' +
+               "\npriority=" + priority +
+               "\ndone=" + (done ? "yes" : "no") + "\n";
+    }
 }

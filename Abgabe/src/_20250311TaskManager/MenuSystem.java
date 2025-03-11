@@ -3,13 +3,16 @@ package _20250311TaskManager;
 import myTools.UserInputScanner;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.BiPredicate;
 
 public class MenuSystem {
     Scanner scanner = new Scanner(System.in);
     List<Task> tasks = new ArrayList<>();
-    int id;
+    int idCount;
+    BiPredicate<Task, Integer> taskHasPriority = (task, priority) -> task.getPriority() == priority;
 
     public static void main(String[] args) {
         MenuSystem ms = new MenuSystem();
@@ -42,7 +45,30 @@ public class MenuSystem {
         String description = scanner.nextLine();
         System.out.println("Enter task priority: ");
         int priority = UserInputScanner.getIntOnlyPosRanged(scanner, 1, 6);
-        tasks.add(new Task(id, name, description, priority));
+        tasks.add(new Task(++idCount, name, description, priority));
+        //TODO consider later to test for lower id available in case a task has been deleted and reassign lower instead
+    }
+
+    void showAllTasks() {
+        ArrayList<Task> openTasks = new ArrayList<>();
+        ArrayList<Task> completedTasks = new ArrayList<>();
+
+        for (Task task : tasks) { //we were supposed to do this without streams/filters
+            if (!task.isDone())
+                openTasks.add(task);
+            else
+                completedTasks.add(task);
+        }
+
+        Comparator<Task> compareTaskByPriority = Comparator.comparing(Task::getPriority);
+        openTasks.sort(compareTaskByPriority);
+        completedTasks.sort(compareTaskByPriority);
+
+        System.out.println("List of still open tasks:");
+        openTasks.forEach(System.out::println);//diesmal selbst geschrieben :D
+        System.out.println();
+        System.out.println("List of completed tasks:");
+        completedTasks.forEach(System.out::println);
     }
 
 

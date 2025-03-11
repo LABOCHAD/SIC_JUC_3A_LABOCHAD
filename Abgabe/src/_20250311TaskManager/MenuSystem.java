@@ -36,6 +36,24 @@ public class MenuSystem {
         return UserInputScanner.getIntOnlyPosRanged(scanner, 1, 10);
     }
 
+    void navigate() {
+        switch (showMenu()) {
+            case 1:
+                addTask();
+                break;
+            case 2:
+                showAllTasks();
+                break;
+            case 3:
+                markTaskAsDone();
+                break;
+            case 9:
+                return;
+            default:
+                System.err.println("Something must have gone horribly wrong here. Exiting...");
+        }
+    }
+
     void addTask() {
         System.out.println("Enter task name: ");
         String name = scanner.nextLine();
@@ -83,6 +101,7 @@ public class MenuSystem {
     }
 
     Task getTaskById(int id) throws TaskNotFoundException {
+        //I wanted to do this with lambdas first, but that became too complicated.
         for (Task task : tasks) {
             if (task.getId() == id)
                 return task;

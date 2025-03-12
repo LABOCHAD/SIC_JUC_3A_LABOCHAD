@@ -18,20 +18,25 @@ public class MenuSystem {
     ArrayList<Task> openTasks = new ArrayList<>();
     ArrayList<Task> completedTasks = new ArrayList<>();
     Comparator<Task> compareTaskByPriority = Comparator.comparing(Task::getPriority);
-    int idCount;
+    Comparator<Task> compareTaskById = Comparator.comparing(Task::getId);
+
 
     public static void main(String[] args) {
         MenuSystem ms = new MenuSystem();
+        System.out.println("\nWelcome to the menu system of this task manager.");
+        //load file as soon as implemented
         ms.navigate();
         ms.scanner.close();
     }
 
     void navigate() {
         while (true) {
-            while (tasks.isEmpty()) {
+
+            while (tasks.isEmpty()) { // I placed it here, so it won't be necessary to test everywhere
                 System.out.println("\nSeems like we have no tasks, please enter a task first.");
                 addTask();
             }
+
             switch (showMenu()) {
                 case 1:
                     addTask();
@@ -91,7 +96,7 @@ public class MenuSystem {
         System.out.println("Enter task priority: ");
         int priority = UserInputScanner.getIntOnlyPosRanged(scanner, 1, 6);
         try {
-            tasks.add(new Task(++idCount, name, description, priority));
+            tasks.add(new Task(getNextFreeId(), name, description, priority));
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
         }
@@ -158,14 +163,13 @@ public class MenuSystem {
         }
         if (foundTasks.isEmpty()) {
             System.out.println("No task found with that name or description has been found.");
-        }
-        else {
+        } else {
             System.out.println("Found " + foundTasks.size() + " task(s).");
             foundTasks.forEach(System.out::println);
         }
     }
 
-    void showStatistics(){
+    void showStatistics() {
         System.out.println("\nStatistics:");
         System.out.println("Total count of tasks: \t" + tasks.size());
         distinguishTasksByStatus();
@@ -194,6 +198,17 @@ public class MenuSystem {
                 return task;
         }
         throw new TaskNotFoundException("Task with id " + id + " not found");
+    }
+
+    int getNextFreeId() {
+        if (tasks.isEmpty()) return 0;
+        tasks.sort(compareTaskById);
+        int idCount = 0;
+        for (Task task : tasks) {
+            if (task.getId() == idCount) idCount++;
+            else break;
+        }
+        return idCount;
     }
 
 }

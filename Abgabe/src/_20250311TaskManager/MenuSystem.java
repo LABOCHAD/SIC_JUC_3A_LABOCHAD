@@ -57,7 +57,7 @@ public class MenuSystem {
                     prioritize();
                     break;
                 case 6:
-                    displaySortedByPriority();
+                    sortAndDisplayByPropertyOrder();
                     break;
                 case 7:
                     searchTaskByNameOrDescriptionAndShow();
@@ -80,11 +80,11 @@ public class MenuSystem {
         System.out.printf("%nTask Manager Main Menu:" +
                           "%n-----------------------" +
                           "%n(1) Add new task" +
-                          "%n(2) Show all task" +
+                          "%n(2) Show all task (open/done seperated)" +
                           "%n(3) Mark task as done" +
                           "%n(4) Delete a task" +
                           "%n(5) Prioritize task" +
-                          "%n(6) Display all sorted by priority" +
+                          "%n(6) Sort and display by a property's order" +
                           "%n(7) Search for a task (by name and description)" +
                           "%n(8) Show statistical info about tasks" +
                           "%n(9) Change name and description of a task" +
@@ -142,8 +142,34 @@ public class MenuSystem {
         }
     }
 
-    void displaySortedByPriority() {
-        tasks.sort(compareTaskByPriority);
+    void sortAndDisplayByPropertyOrder() {
+        System.out.println("\nWhich property do you want to sort the task by?" +
+                           "\n(1) Name" +
+                           "\n(2) Description" +
+                           "\n(3) Priority" +
+                           "\n(4) ID" +
+                           "\n(5) not at all" +
+                           "\nPlease make a choice: ");
+        int choice = UserInputScanner.getIntOnlyPosRanged(scanner, 1, 5);
+
+        switch (choice) {
+            case 1:
+                tasks.sort(compareTaskByName);
+                break;
+            case 2:
+                tasks.sort(compareTaskByDescription);
+                break;
+            case 3:
+                tasks.sort(compareTaskByPriority);
+                break;
+            case 4:
+                tasks.sort(compareTaskById);
+                break;
+            default:
+                System.out.println("No changes have been applied.");
+                return;
+        }
+
         tasks.forEach(System.out::println);
     }
 

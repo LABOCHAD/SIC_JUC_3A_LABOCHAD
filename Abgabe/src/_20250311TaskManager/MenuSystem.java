@@ -10,13 +10,16 @@ import java.util.Scanner;
 // optional additions:
 // consider adding persistence later with BufferedWriter/Reader (file saving/loading)
 // add another method for (re-)sorting by ID (back again) or other terms like name or description or extend the existing
-// consider later to test for lower id available in case a task has been deleted and reassign lower first instead
 
 public class MenuSystem {
     Scanner scanner = new Scanner(System.in);
+
     List<Task> tasks = new ArrayList<>();
     ArrayList<Task> openTasks = new ArrayList<>();
     ArrayList<Task> completedTasks = new ArrayList<>();
+
+    Comparator<Task> compareTaskByName = Comparator.comparing(Task::getName);
+    Comparator<Task> compareTaskByDescription = Comparator.comparing(Task::getDescription);
     Comparator<Task> compareTaskByPriority = Comparator.comparing(Task::getPriority);
     Comparator<Task> compareTaskById = Comparator.comparing(Task::getId);
 
@@ -63,6 +66,9 @@ public class MenuSystem {
                     showStatistics();
                     break;
                 case 9:
+                    changeNameAndDescription();
+                    break;
+                case 10:
                     return;
                 default:
                     System.err.println("Oops. Something went wrong here.");
@@ -81,7 +87,8 @@ public class MenuSystem {
                           "%n(6) Display all sorted by priority" +
                           "%n(7) Search for a task (by name and description)" +
                           "%n(8) Show statistical info about tasks" +
-                          "%n(9) Exit the programm" +
+                          "%n(9) Change name and description of a task" +
+                          "%n(10) Exit the programm" +
                           "%n" +
                           "%nPlease make a choice between 0 and 9: ");
 
@@ -114,7 +121,7 @@ public class MenuSystem {
         completedTasks.forEach(System.out::println);
     }
 
-    void markTaskAsDone() throws TaskNotFoundException {
+    void markTaskAsDone() {
         try {
             Task task = getTaskById();
             task.markAsDone();
@@ -125,7 +132,7 @@ public class MenuSystem {
         }
     }
 
-    void deleteTask() throws TaskNotFoundException {
+    void deleteTask() {
         try {
             Task task = getTaskById();
             tasks.remove(task);
@@ -177,6 +184,25 @@ public class MenuSystem {
         System.out.println("Tasks already completed: \t" + completedTasks.size());
     }
 
+    void changeNameAndDescription() {
+        try {
+            Task task = getTaskById();
+            System.out.println("You picked the following task: " + task);
+            System.out.println("Now you can change its name and its description.");
+            System.out.println("Type in the new value, if wanted or leave it empty for not changing.");
+
+            System.out.println("New name: ");
+            String name = scanner.nextLine();
+            System.out.println("New Description");
+            String description = scanner.nextLine();
+
+            if (!name.isEmpty()) task.setName(name);
+            if (!description.isEmpty()) task.setDescription(description);
+
+        } catch (TaskNotFoundException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
     void distinguishTasksByStatus() {
         openTasks.clear();

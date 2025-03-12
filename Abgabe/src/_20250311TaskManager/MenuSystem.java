@@ -2,10 +2,7 @@ package _20250311TaskManager;
 
 import myTools.UserInputScanner;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 // optional additions:
 // consider adding persistence later with BufferedWriter/Reader (file saving/loading)
@@ -254,9 +251,13 @@ public class MenuSystem {
 
     int getNextFreeId() {
         if (tasks.isEmpty()) return 0;
-        tasks.sort(compareTaskById);
+
+        List<Task> tempTasks = new ArrayList<>(tasks); //internally uses: Arrays.copyOf(array, size, dataType);
+        //Why? Because this way it won't make an unwanted re-sorting on the original list.
+        tempTasks.sort(compareTaskById);
+
         int idCount = 0;
-        for (Task task : tasks) {
+        for (Task task : tempTasks) {
             if (task.getId() == idCount) idCount++;
             else break;
         }

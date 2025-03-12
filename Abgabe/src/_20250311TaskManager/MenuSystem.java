@@ -6,7 +6,6 @@ import java.util.*;
 
 // optional additions:
 // consider adding persistence later with BufferedWriter/Reader (file saving/loading)
-// add another method for (re-)sorting by ID (back again) or other terms like name or description or extend the existing
 
 public class MenuSystem {
     Scanner scanner = new Scanner(System.in);

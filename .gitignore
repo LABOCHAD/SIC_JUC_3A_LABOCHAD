@@ -109,10 +109,8 @@ obj/
 [Dd]ebug/
 [Rr]elease/
 build/
-out/
 v17/
 *.v2
-.vs/
 target/ #from intelliJ mavens
 
 
@@ -138,7 +136,6 @@ target/
 *.$$$
 *.pid
 *.userprefs
-*.suo
 *.wsuo
 *backup.json
 
@@ -162,7 +159,6 @@ target/
 /Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/.vs/WindowsForms_Library/DesignTimeBuild/.dtbcache.v2
 /Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/MemoryGame.AssemblyInfo.cs
 /Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/MemoryGame.AssemblyInfoInputs.cache
-/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/MemoryGame.AssemblyInfo.cs
 /Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Release/net9.0-windows/MemoryGame.AssemblyInfo.cs
 /Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Release/net9.0-windows/MemoryGame.AssemblyInfoInputs.cache
 /Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/bin/Debug/net9.0-windows/MemoryGame.dll

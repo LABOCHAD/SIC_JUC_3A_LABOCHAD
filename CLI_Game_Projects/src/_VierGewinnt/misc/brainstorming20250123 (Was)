@@ -1,0 +1,33 @@
+☐Aufgabe 4 – Spielen und Szenarien
+Macht euch Gedanken über die verschiedenen Spielszenarien. Spielt dazu das Spiel und
+notiert euch in einer Datei, welche Szenarien ihr in eure Implementierung des Spiels
+übernehmen möchtet.
+Erstellt ein Storyboard. (Beispiel im Anhang & Handschrift ist erlaubt!)
+
+---Brainstorming---
+Standardfeld 7x6 (bxh)
+2 Spieler (Standard)
+21 Steine pro Spieler
+ggf. Timer pro Zug (z.B. 15s)
+-- wenn nicht gesetzt, entweder random oder gar kein Zug
+
+Wie viele Runden gegeneinander (win, lose, draw)
+--ggf. extrarunde stechen
+--ggf. scoreboard
+
+Gewinnbedingungen
+4er-Reihe erkennen
+--Unterschiede bei den Spielern (eigene oder Gegner)
+--horizontal, vertikal, diagonal
+--ein Spieler links, mitte Spielbrett, rechts anderer Spieler mit win/lose
+
+Prototyp (Minimalanforderung) in der Konsole
+--Minimalkriterium: Spielbarkeit einer Einzelrunde!
+
+MUSS Präsentation + Dokumentation
+--wenn alles soweit fertig ist, dann !!! KANN man überlegen > Übertrag in GUI (JFrame)
+
+
+
+TRELLO: https://trello.com/b/vpcRJjVC/viergewinntlabochawerkwloch
+

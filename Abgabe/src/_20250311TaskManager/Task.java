@@ -15,7 +15,12 @@ public class Task {
         this.name = name;
         this.description = description;
         this.priority = priority;
-        System.out.println("Task has been created");
+        System.out.println("Task has been created. ID: " + this.id);
+    }
+
+    Task(int id, String name, String description, int priority, boolean done) { //for recreation when loading
+        this(id, name, description, priority);
+        this.done = done;
     }
 
     void markAsDone() {
@@ -59,7 +64,6 @@ public class Task {
     public boolean isDone() {
         return done;
     }
-
 
     @Override
     public String toString() {

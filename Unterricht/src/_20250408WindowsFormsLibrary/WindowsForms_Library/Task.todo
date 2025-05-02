@@ -1,0 +1,17 @@
+﻿DONE Öffnet das Projekt von gestern, in der ihr eine Oberfläche zum Hinzufügen eines Buches gebaut hattet
+DONE Erstellt ein Package singleton
+DONE Projekt – Rechtsklick – Hinzufügen – Neuer Ordner – Name: singleton
+DONE Erstellt eine STATISCHE Klasse DBConnector(kann somit nur statische Elemente beinhalten)
+DONE Nutzt die Klasse MySqlConnection, um eine Singleton-Klasse zu schreiben
+DONE Schreibe eine getter-Methode, die eine Connection zurückgeben soll.
+DONE Überprüfe, bevor du eine Connection aufbaust, ob die Connection null oder closed ist
+
+DONE ConnectionState.Closed
+DONE Verbinde dich mit der Library-Datenbank
+DONE Nutze dafür die Open()-Methode
+DONE NutzeExceptions
+DONE Gebt mittels MessageBox.Show(„Connected Successfully“) aus, ob die Verbindung erfolgreich war. Wenn nicht, passt die MessageBox-Nachricht an.
+ 
+"Server=localhost;Database=library;User ID=root;Password=;"
+
+DONE 

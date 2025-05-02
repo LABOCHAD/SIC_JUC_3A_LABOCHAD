@@ -1,0 +1,3 @@
+0 ~ Hallo ~ Welt ~ 1 ~ false
+1 ~ Hallo ~ again ~ 2 ~ true
+2 ~ Danke ~ Anita ~ 1 ~ false

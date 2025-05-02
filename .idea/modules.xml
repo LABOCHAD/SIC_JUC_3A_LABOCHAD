@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Abgabe/Abgabe.iml" filepath="$PROJECT_DIR$/Abgabe/Abgabe.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SIC_JUC_3A_LABOCHAD_Github.iml" filepath="$PROJECT_DIR$/SIC_JUC_3A_LABOCHAD_Github.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../CLI_Game_Projects/CLI_Game_Projects.iml" filepath="$PROJECT_DIR$/../CLI_Game_Projects/CLI_Game_Projects.iml" />
       <module fileurl="file://$PROJECT_DIR$/Unterricht/Unterricht.iml" filepath="$PROJECT_DIR$/Unterricht/Unterricht.iml" />
     </modules>
   </component>

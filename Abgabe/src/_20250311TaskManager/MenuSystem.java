@@ -23,7 +23,7 @@ public class MenuSystem {
     public static void main(String[] args) {
         MenuSystem ms = new MenuSystem();
         System.out.println("\nWelcome to the menu system of this task manager.");
-        //load file as soon as implemented
+        ms.tasks = TaskFileHandler.loadTasksFromFile(); //stays empty, if not successful.
         ms.navigate();
         ms.scanner.close();
     }
@@ -37,6 +37,9 @@ public class MenuSystem {
             }
 
             switch (showMenu()) {
+                case 0:
+                    TaskFileHandler.saveTasksToFile(tasks);
+                    break;
                 case 1:
                     addTask();
                     break;
@@ -73,8 +76,11 @@ public class MenuSystem {
     }
 
     int showMenu() {
+        UserInputScanner.pressReturnToContinue(scanner);
+
         System.out.printf("%nTask Manager Main Menu:" +
                           "%n-----------------------" +
+                          "%n(0) Save changes to file" +
                           "%n(1) Add new task" +
                           "%n(2) Show all task (open/done seperated)" +
                           "%n(3) Mark task as done" +
@@ -88,7 +94,7 @@ public class MenuSystem {
                           "%n" +
                           "%nPlease make a choice between 0 and 9: ");
 
-        return UserInputScanner.getIntOnlyPosRanged(scanner, 1, 10);
+        return UserInputScanner.getIntOnlyPosRanged(scanner, 0, 11);
     }
 
     void addTask() {
@@ -111,9 +117,15 @@ public class MenuSystem {
         completedTasks.sort(compareTaskByPriority);
 
         System.out.println("List of still open tasks:");
-        openTasks.forEach(System.out::println);//diesmal selbst geschrieben :D
+        openTasks.forEach(System.out::println);
+        if (openTasks.isEmpty()) {
+            System.out.println("No open tasks found.");
+        }
         System.out.println();
         System.out.println("List of completed tasks:");
+        if (completedTasks.isEmpty()) {
+            System.out.println("No completed tasks found.");
+        }
         completedTasks.forEach(System.out::println);
     }
 

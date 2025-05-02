@@ -1,0 +1,2 @@
+Die View dürft ihr frei gestalten. Auf der Folie ist nur ein Beispiel aufgelistet.
+Gerne auf Git abgeben :)

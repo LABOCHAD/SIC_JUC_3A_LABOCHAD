@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.HashMap;
 
 public class IO {
-    private String dateiPfad = "vokabel.txt"; //Make it relative to package containing main class?
+    private String dateiPfad = "Abgabe/src/_20250310VokabelTrainer/vokabel.txt";
 
     public IO() throws IOException {
         File myFile = new File(dateiPfad);

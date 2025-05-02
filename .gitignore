@@ -1,29 +1,185 @@
-### IntelliJ IDEA ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# AWS User-specific
+.idea/**/aws.xml
+
+# Generated files
+.idea/**/contentModel.xml
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# Gradle and Maven with auto-import
+# When using Gradle or Maven with auto-import, you should exclude module files,
+# since they will be recreated, and may cause churn.  Uncomment if using
+# auto-import.
+# .idea/artifacts
+.idea/compiler.xml
+.idea/encodings.xml
+# .idea/jarRepositories.xml
+# .idea/modules.xml
+# .idea/*.iml
+# .idea/modules
+# *.iml
+# *.ipr
+
+# CMake
+cmake-build-*/
+
+# Mongo Explorer plugin
+.idea/**/mongoSettings.xml
+
+# File-based project format
+*.iws
+
+# IntelliJ
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Cursive Clojure plugin
+.idea/replstate.xml
+
+# SonarLint plugin
+.idea/sonarlint/
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Editor-based Rest Client
+.idea/httpRequests
+
+# Android studio 3.1+ serialized cache file
+.idea/caches/build_file_checksums.ser
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/sic-juc-2.iml
+/.idea/vcs.xml
+/Abgabe/src/_20250407AufgabeC#WiederholungGrundlagen/CSharpWiederholung/CSharpWiederholung/bin/
+/Abgabe/src/_20250407AufgabeC#WiederholungGrundlagen/CSharpWiederholung/CSharpWiederholung/obj/
+/OnlineShop_DominikHakanMartina/target/
+/Abgabe/src/_20250407AufgabeC#WiederholungGrundlagen/CSharpWiederholung/.vs/CSharpWiederholung/
+/.vs/
+*.vsidx
+/bin/
+/obj/
+
+# -- given by AI --
+# Ignore Visual Studio temporary files and folders
+.vs/
+*.suo
+*.user
+*.sln.docstates
+*.cache
+*.resharper.*
+_ReSharper.*
+vssver.scc
+vsssettings.scc
+ProjectAnalysis.sarif
+
+# Ignore build output directories
 bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+build/
+out/
+v17/
+*.v2
+.vs/
+target/ #from intelliJ mavens
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
 
-### VS Code ###
-.vscode/
+# Ignore NuGet packages (usually handled by package restore)
+packages/
+*.nupkg
 
-### Mac OS ###
-.DS_Store
+# Ignore test result files
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Ignore JetBrains Rider-specific files (if you use it)
+.idea/
+target/
+
+# Ignore other common build artifacts
+*.log
+*.tmp
+*.bak
+*.swp
+*.$$$
+*.pid
+*.userprefs
+*.suo
+*.wsuo
+*backup.json
+
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/.vs/WindowsForms_Library/v17/DocumentLayout.backup.json
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/.vs/WindowsForms_Library/v17/DocumentLayout.json
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/bin/Debug/net9.0-windows/WindowsForms_Library.dll
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/bin/Debug/net9.0-windows/WindowsForms_Library.exe
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/bin/Debug/net9.0-windows/WindowsForms_Library.pdb
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/obj/Debug/net9.0-windows/ref/WindowsForms_Library.dll
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/obj/Debug/net9.0-windows/refint/WindowsForms_Library.dll
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/obj/Debug/net9.0-windows/apphost.exe
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/obj/Debug/net9.0-windows/WindowsForms_Library.AssemblyInfo.cs
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/obj/Debug/net9.0-windows/WindowsForms_Library.csproj.GenerateResource.cache
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/obj/Debug/net9.0-windows/WindowsForms_Library.AssemblyInfoInputs.cache
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/obj/Debug/net9.0-windows/WindowsForms_Library.dll
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/obj/Debug/net9.0-windows/WindowsForms_Library.pdb
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/.vs/ProjectEvaluation/windowsforms_library.metadata.v9.bin
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/.vs/ProjectEvaluation/windowsforms_library.projects.v9.bin
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/.vs/ProjectEvaluation/windowsforms_library.strings.v9.bin
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/.vs/WindowsForms_Library/v17/.futdcache.v2
+/Unterricht/src/_20250408WindowsFormsLibrary/WindowsForms_Library/.vs/WindowsForms_Library/DesignTimeBuild/.dtbcache.v2
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/MemoryGame.AssemblyInfo.cs
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/MemoryGame.AssemblyInfoInputs.cache
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/MemoryGame.AssemblyInfo.cs
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Release/net9.0-windows/MemoryGame.AssemblyInfo.cs
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Release/net9.0-windows/MemoryGame.AssemblyInfoInputs.cache
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/bin/Debug/net9.0-windows/MemoryGame.dll
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/bin/Debug/net9.0-windows/MemoryGame.exe
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/bin/Debug/net9.0-windows/MemoryGame.pdb
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/ref/MemoryGame.dll
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/refint/MemoryGame.dll
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/apphost.exe
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/MemoryGame.csproj.CoreCompileInputs.cache
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/MemoryGame.csproj.GenerateResource.cache
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/MemoryGame.dll
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/Debug/net9.0-windows/MemoryGame.pdb
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/MemoryGame.csproj.nuget.dgspec.json
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/project.assets.json
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/MemoryGame/obj/project.nuget.cache
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/.vs/MemoryGame/v17/DocumentLayout.json
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/.vs/MemoryGame/DesignTimeBuild/.dtbcache.v2
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/.vs/MemoryGame/v17/ResourceExplorer/settings.json
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/.vs/MemoryGame/v17/.futdcache.v2
+/Abgabe/src/_20250408PflichtaufgabeMemoryUI/MemoryGame/.vs/MemoryGame/v17/DocumentLayout.backup.json

@@ -1,0 +1,5 @@
+Reihenfolge Schichtmodell: Erst Modell, dann DAO (Database Access Object), dann Service-Objekte
+Model: Book
+DAO: BookDAO - Interface, BookDAOImpl.
+Implementiere 2 Methoden deines Interfaces.
+Service: Testen eurer implementierten Methode

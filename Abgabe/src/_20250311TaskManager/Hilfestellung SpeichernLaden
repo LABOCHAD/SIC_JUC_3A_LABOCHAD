@@ -1,0 +1,54 @@
+//Zum Speichern
+// ForSchleife über die Liste.
+// Aufrufen der writer.write(String str) -Methode.
+// Als str einsetzen, wie der Task in der File gespeichert werden soll.
+// Einzelne Elemente sollen mittels Sonderzeichen getrennt werden.
+// Mittels writer.newLine() eine neue Zeile einfügen.
+//Beispiel
+    public static void saveTasksToFile(List<Task> tasks) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+            for (Task task : tasks) {
+                writer.write(
+                        task.getName() + DELIMITER +
+                        task.getDescription() + DELIMITER +
+                        task.getPriority() + DELIMITER +
+                        task.isDone()
+                );
+                writer.newLine();
+            }
+
+            System.out.println("Aufgaben erfolgreich gespeichert!");
+        } catch (IOException e) {
+            System.out.println("Fehler beim Speichern der Aufgaben: " +
+                               e.getMessage());
+        }
+    }
+
+//ZUM LADEN
+    // Für jede Zeile in der Datei soll nach dem Sonderzeichen getrennt werden.
+    // Nutze die split(String s)-Methode.
+    // Dein String Array beinhaltet einzelne Elemente eines Tasks.
+    // Füge diese einem Konstruktor hinzu.
+    // Speichere den neuen Task in einer Liste.
+    public static List<Task> loadTasksFromFile() {
+        List<Task> tasks = new ArrayList<>();
+        String line = "";
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+            while ((line = reader.readLine()) != null) {
+                String[] part = line.split(DELIMITER);
+                int id = Integer.parseInt(part[0]);
+                String name = part[1];
+                String description = part[2];
+                int priority = Integer.parseInt(part[3]);
+                boolean done = Boolean.parseBoolean(part[4]);
+                tasks.add(new Task(id, name, description, priority, done));
+            }
+            System.out.println("Aufgaben erfolgreich geladen!");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Fehler beim Laden einer Aufgabe: " + e.getMessage());
+            System.out.println("Fehlerhafte Zeile in Datei: " + line);
+        } catch (IOException e) {
+            System.out.println("Fehler beim Laden der Aufgabendatei: " + e.getMessage());
+        }
+        return tasks;
+    }

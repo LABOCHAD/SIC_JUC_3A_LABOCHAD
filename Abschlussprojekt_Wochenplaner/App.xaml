@@ -1,0 +1,132 @@
+﻿<Application x:Class="Abschlussprojekt_Wochenplaner.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Abschlussprojekt_Wochenplaner" 
+             xmlns:converters="clr-namespace:Abschlussprojekt_Wochenplaner.Converters" xmlns:System="clr-namespace:System;assembly=netstandard"
+             StartupUri="Views\MainView.xaml">
+
+
+    <Application.Resources>
+        <!-- Override default style of borders to make them look like round shaped white boards -->
+
+        <!-- Make all borders have round corners, here predefine parameters-->
+        <CornerRadius x:Key="boardCornerRadius">5</CornerRadius>
+        <SolidColorBrush x:Key="boardBackgroundBrush">White</SolidColorBrush>
+        <SolidColorBrush x:Key="boardBorderBrush">Black</SolidColorBrush>
+        <Thickness x:Key="boardBorderThickness">3</Thickness>
+        <Thickness x:Key="boardMargin">5</Thickness>
+        <HorizontalAlignment x:Key="boardHorizontalContentAlignment">Center</HorizontalAlignment>
+        <VerticalAlignment x:Key="boardVerticalContentAlignment">Center</VerticalAlignment>
+
+        <!--here set them-->
+        <Style x:Key="BoardStyle" TargetType="{x:Type Border}">
+            <Setter Property="Background" Value="{StaticResource boardBackgroundBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource boardBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource boardBorderThickness}"/>
+            <Setter Property="CornerRadius" Value="{StaticResource boardCornerRadius}"/>
+            <Setter Property="Margin" Value="{StaticResource boardMargin}"/>
+        </Style>
+
+
+        <!--make static textblocks also look like whiteboard entries-->
+        <Style x:Key="InfoTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style x:Key="WeekdayHeaderTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="TextDecorations" Value="Underline"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <!-- Optional: Falls du eine bestimmte Schriftart möchtest -->
+            <Setter Property="FontSize" Value="20"/>
+            <!-- Optional: Falls du eine bestimmte Schriftgröße möchtest -->
+        </Style>
+
+
+        <!-- all style changes can be overridden in specific elements by just not applying the new style-->
+
+        <!-- Make colored Buttons possible like in my mock up-->
+        <FontFamily x:Key="ButtonFontFamily">Calibri</FontFamily>
+        <FontWeight x:Key="ButtonFontWeight">Bold</FontWeight>
+        <CornerRadius x:Key="ButtonCornerRadius">10</CornerRadius>
+        <Thickness x:Key="ButtonMargin">3</Thickness>
+
+        <Style x:Key="LeftActionButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="{StaticResource ButtonFontFamily}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <!-- Set Fontsize direclty, using system.double does not work above in predefinitions -->
+            <Setter Property="FontWeight" Value="{StaticResource ButtonFontWeight}"/>
+            <Setter Property="Margin" Value="{StaticResource ButtonMargin}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                            VerticalAlignment="Stretch"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{StaticResource ButtonCornerRadius}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Opacity" Value="0.6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- For the button reaction highlighting by converter  -->
+        <SolidColorBrush x:Key="SelectedSlotBrush" Color="#FFADD8E6"/>
+        <SolidColorBrush x:Key="DefaultSlotBrush" Color="White"/>
+        <converters:SelectedBackgroundConverter x:Key="backgroundConverter"/>
+        <!-- Provide Converter globally, in case it will be needed in another future sub view  -->
+
+        <Style x:Key="Slot_BoardStyle" TargetType="{x:Type Border}">
+            <!--Background might be set later by category and/or from database-->
+            <Setter Property="BorderBrush" Value="LightGray"/> 
+            <Setter Property="BorderThickness" Value="0.5"/>
+            <Setter Property="CornerRadius" Value="{StaticResource boardCornerRadius}"/>
+            <Setter Property="Margin" Value="2"/> <!-- Later when using BG color, another style value must change -->
+            <Setter Property="Background">
+                <!-- Later when using BG colors (categories), another style value must change for highlighting-->
+                <Setter.Value>
+                    <Binding Path="IsSelected"
+                     Converter="{StaticResource backgroundConverter}"/> <!-- Must be defined before not after -->
+                    <!-- Binding Path="IsSelected": requires the binded object has a boolean property IsSelected -->
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ButtonWithConditionalToolTipStyle" TargetType="Button">
+            <Setter Property="ToolTip" Value="{Binding ToolTipText}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ToolTipText}" Value="">
+                    <Setter Property="ToolTip" Value="{x:Null}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding ToolTipText}" Value="{x:Static System:String.Empty}">
+                    <Setter Property="ToolTip" Value="{x:Null}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+    </Application.Resources>
+
+</Application>

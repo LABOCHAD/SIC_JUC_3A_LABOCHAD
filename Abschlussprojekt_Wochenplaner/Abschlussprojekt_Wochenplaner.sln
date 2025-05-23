@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abschlussprojekt_Wochenplaner", "Abschlussprojekt_Wochenplaner.csproj", "{D3AEBA38-75E7-496B-84EA-EEB4F737F8F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files related to my projects (Links)", "Files related to my projects (Links)", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\Dokumentation\Recherchen und Infos\Erarbeitung WPF, XAML, MVVM.docx = ..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\Dokumentation\Recherchen und Infos\Erarbeitung WPF, XAML, MVVM.docx
+		..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\Planung\GANTT-Diagramm.xlsx = ..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\Planung\GANTT-Diagramm.xlsx
+		..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\Dokumentation\privates Arbeitstagebuch.docx = ..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\Dokumentation\privates Arbeitstagebuch.docx
+		..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\Dokumentation\Projektdokumentation_LABOCHAD.docx = ..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\Dokumentation\Projektdokumentation_LABOCHAD.docx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Stuff", "SQL Stuff", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\MySQL\Create DataBase WeeklySchedule.sql = ..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\MySQL\Create DataBase WeeklySchedule.sql
+		..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\MySQL\HowTo MySQL C#.txt = ..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\MySQL\HowTo MySQL C#.txt
+		..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\MySQL\Prefilling Task Table DEUTSCH.sql = ..\..\..\..\OneDrive - Smart Industry Campus GmbH\Abschlussprojekt_LABOCHAD\MySQL\Prefilling Task Table DEUTSCH.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3AEBA38-75E7-496B-84EA-EEB4F737F8F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3AEBA38-75E7-496B-84EA-EEB4F737F8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3AEBA38-75E7-496B-84EA-EEB4F737F8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3AEBA38-75E7-496B-84EA-EEB4F737F8F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EAF8C660-013A-45F2-9F60-96CDC79EF054}
+	EndGlobalSection
+EndGlobal

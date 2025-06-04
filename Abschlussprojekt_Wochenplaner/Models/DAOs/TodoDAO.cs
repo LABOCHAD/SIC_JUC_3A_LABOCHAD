@@ -1,5 +1,6 @@
 ﻿using Abschlussprojekt_Wochenplaner.Models.Entities;
 using Abschlussprojekt_Wochenplaner.Models.Services;
+using Abschlussprojekt_Wochenplaner.Utilities;
 using MySql.Data.MySqlClient;
 using System.Windows;
 using Task = Abschlussprojekt_Wochenplaner.Models.Entities.Task;
@@ -102,7 +103,7 @@ namespace Abschlussprojekt_Wochenplaner.Models.DAOs
                 using MySqlDataReader reader = cmd.ExecuteReader(); //opened
 
                 while (reader.Read())
-                    Todos.Add(BuildTodoFromReader(reader));
+                    ExceptionHandler.Handle(() => Todos.Add(BuildTodoFromReader(reader))); //avoid full abort when one todo is corrupted
             }
             catch (MySqlException) { throw; }
 

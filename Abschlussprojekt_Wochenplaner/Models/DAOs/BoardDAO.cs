@@ -33,9 +33,9 @@ namespace Abschlussprojekt_Wochenplaner.Models.DAOs
                 cmd.Parameters.AddWithValue("@fromDate", fromDate == null ? (object)DBNull.Value : fromDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture));
                 cmd.Parameters.AddWithValue("@toDate", toDate == null ? (object)DBNull.Value : toDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture));
                 int id = Convert.ToInt32(cmd.ExecuteScalar()); //would have been ExcecuteNonQuery(); (all but no select or aggregation) if not asked for new ID
-                board = new Board(id, year, week, fromDate, toDate); ; //might be more secure than opening a setter for id in entity
+                board = new Board(id, year, week, fromDate, toDate); //might be more secure than opening a setter for id in entity
             }
-            catch (MySqlException) { throw; }
+            catch (MySqlException) { throw; } //TODO exception Messages should be specified later (which Object, Process, ID, ...)
 
             return board;
         }

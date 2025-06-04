@@ -54,9 +54,8 @@ namespace Abschlussprojekt_Wochenplaner.Models.Services
 
             //DONE add date interval calculation later
             // --- Datumsinvervall-Berechnung START ---
-                DateTime mondayOfWeek = today;
-                int diff = (7 + (mondayOfWeek.DayOfWeek - firstDayOfWeek)) % 7;
-                mondayOfWeek = mondayOfWeek.AddDays(-diff);
+                int diff = (7 + (today.DayOfWeek - firstDayOfWeek)) % 7;
+                DateTime mondayOfWeek = today.AddDays(-diff);
                 DateTime sundayOfWeek = mondayOfWeek.AddDays(6);
             // --- Datumsinvervall-Berechnung ENDE ---
             DateOnly fromDate = DateOnly.FromDateTime(mondayOfWeek);

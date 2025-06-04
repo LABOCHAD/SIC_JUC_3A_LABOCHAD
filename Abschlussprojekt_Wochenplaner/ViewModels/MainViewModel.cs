@@ -173,7 +173,7 @@ namespace Abschlussprojekt_Wochenplaner.ViewModels
 
         }
 
-        private void InitializeBoardSlots() //load Todos or just leave them blank, if bord is new
+        private void InitializeBoardSlots() //load Todos and fill them in or just leave them blank, if none is assigned to the board
         {
             BoardEntries = new ObservableCollection<ObservableCollection<BoardSlotViewModel>>();
             for (int day = 0; day < 7; day++)
@@ -188,7 +188,12 @@ namespace Abschlussprojekt_Wochenplaner.ViewModels
             foreach (Todo t in InitialTodos)
             {
                 //assuming that InitialTodos don't exceed the 7*7 range (mind the off by one shift!)
-                BoardEntries[t.WeekdayNumber - 1][t.SlotNumber - 1].Todo = t;
+                BoardSlotViewModel currentSlot = BoardEntries[t.WeekdayNumber - 1][t.SlotNumber - 1];
+                currentSlot.Todo = t;
+                if (string.Equals(t.State, "done"))
+                    currentSlot.DisplayText += " ✔"; //make done visible again
+                else if (string.Equals(t.State, "fail"))
+                    currentSlot.DisplayText += " ❌"; //make fail visible again
             }
         }
 
@@ -231,7 +236,7 @@ namespace Abschlussprojekt_Wochenplaner.ViewModels
                 string selectedOrEnteredTask = dialog.ResultValue;
                 if (!string.IsNullOrWhiteSpace(selectedOrEnteredTask))
                 {
-                    
+
                     task = new Task(selectedOrEnteredTask);
                     if (taskService.IsNewTask(selectedOrEnteredTask))
                     {

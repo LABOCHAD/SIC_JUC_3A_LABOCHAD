@@ -1,9 +1,4 @@
-﻿//Written by AI as I asked it, how I can avoid writing the same try catch block in every method all over again
-
-// Dateiname: ExceptionHandler.cs
-// Pfad: Abschlussprojekt_Wochenplaner/Utilities/ExceptionHandler.cs
-
-using MySql.Data.MySqlClient; // Oder der spezifische Namespace für MySqlException
+﻿using MySql.Data.MySqlClient; // Oder der spezifische Namespace für MySqlException
 using System;
 using System.Diagnostics; // Für Debug.WriteLine
 using System.Windows;   // Für MessageBox

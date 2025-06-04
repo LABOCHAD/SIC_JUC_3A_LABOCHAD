@@ -10,9 +10,9 @@ namespace Abschlussprojekt_Wochenplaner.Models.Entities
         const int MaxLengthTodoState = 4;
         const int MaxLengthInstanceNote = 256;
 
-        static readonly string InvalidNumberMessage = $"{0} number must be from 1 to 7."; //weekday or slot (each 1-7), slots may be more than 7 in future
+        static readonly string InvalidNumberMessage = "{0} number must be from 1 to 7."; //weekday or slot (each 1-7), slots may be more than 7 in future
 
-        static readonly string TodoStateNotInListMessage = $"The given state \"{0}\" is not defined in the list of valid states!";
+        static readonly string TodoStateNotInListMessage = "The given state \"{0}\" is not defined in the list of valid states!"; //no $ when used with string.Format(str, val)
         static readonly List<string> PossibleStatesList = new List<string> { "open", "done", "fail" }.AsReadOnly().ToList(); //toList down-castes collection back to list
         //can't use const, 'cause list is built at runtime. Try to change list throws NotSupportedException. Easier than an Enum for that, I think.
 
@@ -59,7 +59,8 @@ namespace Abschlussprojekt_Wochenplaner.Models.Entities
                     throw new ArgumentOutOfRangeException(nameof(value), value, TodoStateTooLongMessage);
 
                 if (!PossibleStatesList.Contains(value))
-                    throw new ArgumentException(String.Format(TodoStateNotInListMessage, value));
+                    throw new ArgumentException(String.Format(TodoStateNotInListMessage, value) 
+                        + $"\nAt day {WeekdayNumber} and slot {SlotNumber}");
 
                 _state = value;
             }

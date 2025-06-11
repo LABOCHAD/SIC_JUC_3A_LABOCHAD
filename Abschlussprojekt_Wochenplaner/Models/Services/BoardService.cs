@@ -17,9 +17,9 @@ namespace Abschlussprojekt_Wochenplaner.Models.Services
             int week = boardToSave.Week;
             DateOnly? from = boardToSave.FromDate;
             DateOnly? to = boardToSave.ToDate;
-            Board savedBoardWitID;
-            savedBoardWitID = boardDAO.CreateBoard(year, week, from, to);
-            return savedBoardWitID;
+            Board savedBoardWithID;
+            savedBoardWithID = boardDAO.CreateBoard(year, week, from, to);
+            return savedBoardWithID;
         }
 
         public Board GetLastBoardCreated() //tested successfully

@@ -70,8 +70,12 @@ namespace Abschlussprojekt_Wochenplaner.ViewModels
                 {
                     DisplayText = value.Task.TaskName;
                     ToolTipText = (value.Task.GeneralNote == null) ? "" : value.Task.GeneralNote;
-                }  
-                else DisplayText = "";
+                }
+                else
+                {
+                    DisplayText = "";
+                    ToolTipText = "";
+                }
             }
         }
 
